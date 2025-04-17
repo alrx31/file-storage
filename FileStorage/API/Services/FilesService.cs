@@ -10,7 +10,7 @@ public class FilesService(
 {
     public async Task<List<string>> GetAll()
     {
-        return GetFiles(dataFolderPath);
+        return GetFiles(dataFolderPath).Select(x=>x.Substring(dataFolderPath.Length).ToString()).ToList();
     }
 
     public async Task<FileStreamResult> GetFile(string path)
@@ -156,7 +156,6 @@ public class FilesService(
         {
             result.AddRange(GetFiles(dir));
         }
-        
         return result;
     }
 
